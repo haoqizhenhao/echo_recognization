@@ -9,5 +9,13 @@ Created on Mon Jul  2 19:48:00 2018
 import glob
 import matplotlib.pyplot as plt
 import numpy as np
+import scipy.io
 
+data = scipy.io.loadmat('ECHO.mat')  # 读取mat文件
 
+data = data['ECHO']['Data']
+cc = np.array([])
+for i in np.arange(data.shape[1]):
+    bb = data[0][i][0]
+    cc = np.concatenate((cc,bb))
+    
